@@ -6,21 +6,12 @@ components:
     -
         kind: Application
         name: phpmyadmin
-        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
-        gitBranch: main
-        gitApplicationPath: components/phpMyAdmin
+        image: phpmyadmin
         dockerCompose:
-            build:
-                context: ./components/phpMyAdmin
-                dockerfile: .docker/Dockerfile
-            deploy:
-                resources:
-                    limits:
-                        memory: 1G
-                    reservations:
-                        memory: 1G
             ports:
                 - '8080:80'
+            environment:
+                - PMA_ARBITRARY=1
         hosts:
             -
                 hostname: 'app-{{ env.base_domain }}'
