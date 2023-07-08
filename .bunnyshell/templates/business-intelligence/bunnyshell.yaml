@@ -20,7 +20,7 @@ components:
                     reservations:
                         memory: 1G
             ports:
-                - '8080:8080'
+                - '8080:80'
         hosts:
             -
                 hostname: 'app-{{ env.base_domain }}'
