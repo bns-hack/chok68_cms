@@ -1,0 +1,16 @@
+name: business-intelligence
+description: Business Intelligence
+tags:
+   - mysql
+   - database
+   - reporting
+   - tools
+   - analysis
+icons: [ 'mysql', 'database' ]
+stack:
+  packages:
+    - name: MySQL
+      version: '8.0'
+    - name: phpMyAdmin
+      version: '5.2'
+discoverable: true

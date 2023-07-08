@@ -1,0 +1,51 @@
+version: v1
+kind: Environment
+name: business-intelligence
+type: primary
+components:
+    -
+        kind: Application
+        name: phpMyAdmin
+        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
+        gitBranch: main
+        gitApplicationPath: components/phpMyAdmin
+        dockerCompose:
+            build:
+                context: ./components/phpMyAdmin
+                dockerfile: .docker/Dockerfile
+            deploy:
+                resources:
+                    limits:
+                        memory: 1G
+                    reservations:
+                        memory: 1G
+            ports:
+                - '8080:8080'
+        hosts:
+            -
+                hostname: 'app-{{ env.base_domain }}'
+                path: /
+                servicePort: 8080
+    -
+        kind: Database
+        name: database
+        dockerCompose:
+            command: '--default-authentication-plugin=mysql_native_password'
+            environment:
+                MYSQL_DATABASE: bi_db
+                MYSQL_PASSWORD: bi_pass
+                MYSQL_ROOT_PASSWORD: bi_pass
+                MYSQL_USER: bi_user
+            image: 'mysql:8.0.29'
+            ports:
+                - '3306:3306'
+        volumes:
+            -
+                name: database-data
+                mount: /var/lib/mysql
+                subPath: ''
+volumes:
+    -
+        name: database-data
+        size: 1Gi
+        type: disk
