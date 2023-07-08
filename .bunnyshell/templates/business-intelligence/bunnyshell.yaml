@@ -5,7 +5,7 @@ type: primary
 components:
     -
         kind: Application
-        name: phpMyAdmin
+        name: phpmyadmin
         gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
         gitBranch: main
         gitApplicationPath: components/phpMyAdmin
