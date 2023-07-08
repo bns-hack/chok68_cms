@@ -6,8 +6,8 @@ components:
     -
         kind: Application
         name: phpmyadmin
-        image: phpmyadmin
         dockerCompose:
+            image: phpmyadmin
             ports:
                 - '8080:80'
             environment:
@@ -21,13 +21,13 @@ components:
         kind: Database
         name: database
         dockerCompose:
+            image: 'mysql:8.0.29'
             command: '--default-authentication-plugin=mysql_native_password'
             environment:
                 MYSQL_DATABASE: bi_db
                 MYSQL_PASSWORD: bi_pass
                 MYSQL_ROOT_PASSWORD: bi_pass
                 MYSQL_USER: bi_user
-            image: 'mysql:8.0.29'
             ports:
                 - '3306:3306'
         volumes:
