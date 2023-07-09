@@ -38,7 +38,7 @@ components:
     -
         kind: Application
         name: django-cms
-        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
+        gitRepo: 'https://github.com/chok68/cms.git'
         gitBranch: main
         gitApplicationPath: components/django-cms-app
         dockerCompose:
