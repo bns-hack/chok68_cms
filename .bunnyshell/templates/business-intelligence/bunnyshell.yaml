@@ -21,7 +21,7 @@ components:
             -
                 hostname: 'app-{{ env.base_domain }}'
                 path: /
-                servicePort: 8080
+                servicePort: 8000
     -
         kind: Application
         name: phpmyadmin
@@ -33,7 +33,7 @@ components:
                 - PMA_HOST=database
         hosts:
             -
-                hostname: 'app-{{ env.base_domain }}'
+                hostname: 'api-{{ env.base_domain }}'
                 path: /
                 servicePort: 8080
     -
