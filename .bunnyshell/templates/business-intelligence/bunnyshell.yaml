@@ -19,7 +19,7 @@ components:
                 - DATABASE_URL=mysql://bi_user:bi_pass@database/bi_db
             command:
                 - bash
-                - 'c'
+                - '-c'
                 - python manage.py runserver 0.0.0.0:80
         hosts:
             -
