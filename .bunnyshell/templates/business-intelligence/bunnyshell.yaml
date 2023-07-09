@@ -56,7 +56,9 @@ components:
             command:
                 - bash
                 - '-c'
-                - python manage.py runserver 0.0.0.0:80 wait_for_database
+                - |
+                  python manage.py wait_for_database
+                  python manage.py runserver 0.0.0.0:80
         hosts:
             -
                 hostname: 'app-{{ env.base_domain }}'
