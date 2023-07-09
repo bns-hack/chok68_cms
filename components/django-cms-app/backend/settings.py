@@ -150,7 +150,7 @@ DATABASES = {
             'NAME': 'bi_db',
             'USER': 'bi_user',
             'PASSWORD': 'bi_pass',
-            'HOST': 'database',
+            'HOST': 'mysql_host',
             'PORT': '3306',
         }
     }

@@ -32,7 +32,7 @@ components:
             ports:
                 - '8080:80'
             environment:
-                - PMA_HOST=database
+                - PMA_HOST=mysql_host
         hosts:
             -
                 hostname: 'phpmyadmin-{{ env.base_domain }}'
@@ -40,7 +40,7 @@ components:
                 servicePort: 8080
     -
         kind: Database
-        name: database
+        name: mysql_host
         dockerCompose:
             image: 'mysql:8.0.29'
             command: '--default-authentication-plugin=mysql_native_password'
