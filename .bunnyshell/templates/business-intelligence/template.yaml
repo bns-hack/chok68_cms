@@ -11,6 +11,8 @@ stack:
   packages:
     - name: MySQL
       version: '8.0'
+    - name: phpmyadmin
+      version: '5.2'
     - name: django-cms
       version: '3.11.0'
 discoverable: true

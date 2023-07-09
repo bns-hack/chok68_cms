@@ -5,27 +5,18 @@ type: primary
 components:
     -
         kind: Application
-        name: django-cms
-        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
-        gitBranch: main
-        gitApplicationPath: components/django-cms-app
+        name: phpmyadmin
         dockerCompose:
-            build:
-                context: ./components/django-cms-app
-                dockerfile: .docker/Dockerfile
+            image: phpmyadmin
             ports:
-                - '8000:80'
+                - '8080:80'
             environment:
-                - DATABASE_URL=mysql://bi_user:bi_pass@database/bi_db
-            command:
-                - bash
-                - '-c'
-                - python manage.py runserver 0.0.0.0:80
+                - PMA_HOST=database
         hosts:
             -
-                hostname: 'app-{{ env.base_domain }}'
+                hostname: 'phpmyadmin-{{ env.base_domain }}'
                 path: /
-                servicePort: 8000
+                servicePort: 8080
     -
         kind: Database
         name: database
@@ -44,6 +35,31 @@ components:
                 name: database-data
                 mount: /var/lib/mysql
                 subPath: ''
+    -
+        kind: Application
+        name: django-cms
+        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
+        gitBranch: main
+        gitApplicationPath: components/django-cms-app
+        dockerCompose:
+            build:
+                context: ./components/django-cms-app
+                dockerfile: .docker/Dockerfile
+            ports:
+                - '8000:80'
+            environment:
+                - DATABASE_URL=mysql://bi_user:bi_pass@database/bi_db
+            command:
+                - bash
+                - '-c'
+                - |
+                  sleep 10
+                  python manage.py runserver 0.0.0.0:80
+        hosts:
+            -
+                hostname: 'app-{{ env.base_domain }}'
+                path: /
+                servicePort: 8000
 volumes:
     -
         name: database-data
