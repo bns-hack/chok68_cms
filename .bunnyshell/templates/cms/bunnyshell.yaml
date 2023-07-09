@@ -1,6 +1,6 @@
 version: v1
 kind: Environment
-name: business-intelligence
+name: cms
 type: primary
 components:
     -
