@@ -15,8 +15,6 @@ components:
                 dockerfile: .docker/Dockerfile
             ports:
                 - '8000:80'
-            environment:
-                - DATABASE_URL=mysql://root:S3CR3T_bi_pass@database:3306/django-cms
             command:
                 - bash
                 - '-c'
