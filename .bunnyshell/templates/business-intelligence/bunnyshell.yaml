@@ -35,7 +35,7 @@ components:
                 - PMA_HOST=database
         hosts:
             -
-                hostname: 'api-{{ env.base_domain }}'
+                hostname: 'phpmyadmin-{{ env.base_domain }}'
                 path: /
                 servicePort: 8080
     -
