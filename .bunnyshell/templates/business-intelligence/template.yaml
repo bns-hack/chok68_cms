@@ -1,12 +1,10 @@
-name: business-intelligence
-description: Business Intelligence
+name: djangocms
+description: django CMS is a modern web publishing platform built with Django, the web application framework “for perfectionists with deadlines”. Includes phpMyAdmin.
 tags:
    - mysql
    - database
-   - reporting
-   - tools
-   - analysis
-icons: [ 'mysql', 'database' ]
+   - content management
+icons: [ 'django', 'mysql' ]
 stack:
   packages:
     - name: MySQL
