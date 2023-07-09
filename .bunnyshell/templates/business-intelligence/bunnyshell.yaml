@@ -5,6 +5,25 @@ type: primary
 components:
     -
         kind: Application
+        name: django-cms
+        gitRepo: 'https://github.com/chok68/bunnyshellbi.git'
+        gitBranch: main
+        gitApplicationPath: components/django-cms-app
+        dockerCompose:
+            build:
+                context: ./components/django-cms-app
+                dockerfile: .docker/Dockerfile
+            ports:
+                - '8000:80'
+            environment:
+                - DATABASE_URL=mysql://bi_user:bi_pass@database/bi_db
+        hosts:
+            -
+                hostname: 'app-{{ env.base_domain }}'
+                path: /
+                servicePort: 8080
+    -
+        kind: Application
         name: phpmyadmin
         dockerCompose:
             image: phpmyadmin
@@ -26,7 +45,7 @@ components:
             environment:
                 MYSQL_DATABASE: bi_db
                 MYSQL_PASSWORD: bi_pass
-                MYSQL_ROOT_PASSWORD: bi_pass
+                MYSQL_ROOT_PASSWORD: S3CR3T_bi_pass
                 MYSQL_USER: bi_user
             ports:
                 - '3306:3306'
