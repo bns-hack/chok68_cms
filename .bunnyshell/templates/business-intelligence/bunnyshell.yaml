@@ -49,6 +49,10 @@ components:
                 - '8000:80'
             environment:
                 - DATABASE_URL=mysql://bi_user:bi_pass@database/bi_db
+                - DEFAULT_STORAGE_DSN=file:///data/media/?url=%2Fmedia%2F
+                - DEBUG=True
+                - DOMAIN_ALIASES="localhost, 127.0.0.1"
+                - SECURE_SSL_REDIRECT=False
             command:
                 - bash
                 - '-c'
